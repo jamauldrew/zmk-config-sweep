@@ -29,25 +29,7 @@
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
         };
-        
-    /*     return_shift_macro: return_shift_macro { */
-    /*         compatible = "zmk,behavior-macro"; */
-    /*         #binding-cells = <0>; */
-    /*         bindings = < */
-    /*             &macro_press &kp LSHFT */
-    /*           , &macro_tap   &kp ENTER */
-    /*           , &macro_release &kp LSHFT */
-    /*         >; */
-    /*     }; */
-    /**/
-    /*     return_morph: return_morph { */
-    /*         compatible = "zmk,behavior-mod-morph"; */
-    /*         #binding-cells = <0>; */
-    /*         bindings = <&kp ENTER>, <&return_shift_macro>; */
-    /*         mods = <(MOD_LSFT)>; // change MOD_LSFT to whichever modifier corresponds to “left layer key” */
-    /*         keep-mods = <(MOD_LSFT)>; // optional: preserve the mod if needed */
-    /*     }; */
-    /* }; */
+    };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -59,6 +41,7 @@
 
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
             display-name = "Default Layer";
             bindings = <
