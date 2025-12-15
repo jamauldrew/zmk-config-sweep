@@ -46,7 +46,7 @@ sweep/config/cradio.keymap
 
         default_layer {
             display-name = "Default Layer";
-            bindings = 
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
@@ -64,7 +64,7 @@ sweep/config/cradio.keymap
 
         right_layer {
             display-name = "Right Layer";
-            bindings = 
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │  [       │  {       │  }       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  - _     │
             &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp MINUS
@@ -100,7 +100,7 @@ sweep/config/cradio.keymap
 
         tri_layer {
             display-name = "Tri Layer";
-            bindings =
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │ F1       │ F2       │ F3       │ F4       │  RESET   │
            &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
