@@ -47,13 +47,13 @@
         default_layer {
             display-name = "Default Layer";
             bindings = <
-            /* row 1 */
+            /* Row 1:  Q   W   E   R   T      Y   U   I   O   P */
             &kp Q   &kp W   &kp E   &kp R   &kp T    &kp Y   &kp U   &kp I   &kp O   &kp P
-            /* row 2 */
+            /* Row 2:  A   S   D   F   G      H   J   K   L   ; */
             HRML(A, S, D, F)  &kp G  &kp H  HRMR(J, K, L, SEMI)
-            /* row 3 */
+            /* Row 3:  Z   X   C   V   B      N   M   ,   .   / */
             &kp Z   &kp X   &kp C   &kp V   &kp B    &kp N   &kp M   &kp COMMA   &kp DOT    &kp FSLH
-            /* thumb cluster */
+            /* Thumb cluster: LAYER2-TAB, BACKSPACE, SPACE, LAYER1-ENTER */
                      &lt 2 TAB   &kp BSPC   &kp SPACE  &lt 1 LS(ENTER)
             >;
         };
@@ -61,13 +61,13 @@
         right_layer {
             display-name = "Right Layer";
             bindings = <
-            /* row 1 */
+            /* Row 1: trans  [   {   }   trans    HOME  PGDN  PGUP  END  - */
             &trans  &kp LBKT  &kp LBRC  &kp RBRC  &trans   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &kp MINUS
-            /* row 2 */
+            /* Row 2: !  @  #  $  %     LEFT  DOWN  UP  RIGHT  ' */
             &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp SQT
-            /* row 3 */
+            /* Row 3: placeholders (transparent) */
             &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans
-            /* thumb cluster */
+            /* Thumb cluster: ENTER, ESC, trans, trans */
                      &kp ENTER  &kp ESC  &trans  &trans
             >;
         };
@@ -75,13 +75,13 @@
         left_layer {
             display-name = "Left Layer";
             bindings = <
-            /* row 1 */
+            /* Row 1: INS 1 2 3 PRSC   ^  ( ) ] ~ */
             &kp INS  &kp N1  &kp N2  &kp N3  &kp PRSC  &kp CARET  &kp LPAR  &kp RPAR  &kp RBKT  &kp TILDE
-            /* row 2 */
+            /* Row 2: DEL 4 5 6 trans   *  -  =  \  ` */
             &kp DEL  &kp N4  &kp N5  &kp N6  &trans   &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH  &kp GRAVE
-            /* row 3 */
+            /* Row 3: CAPS 7 8 9 0  &  _  +  |  trans */
             &caps_word  &kp N7  &kp N8  &kp N9  &kp N0  &kp AMPS  &kp UNDER  &kp PLUS  &kp PIPE  &trans
-            /* thumb cluster */
+            /* Thumb cluster: trans, trans, trans, trans */
                      &trans  &trans  &trans  &trans
             >;
         };
@@ -89,13 +89,13 @@
         tri_layer {
             display-name = "Tri Layer";
             bindings = <
-            /* row 1 */
+            /* Row 1: RESET, trans x3, BT_SEL 0, F1 F2 F3 F4, RESET */
             &sys_reset  &trans  &trans  &trans  &bt BT_SEL 0   &kp F1  &kp F2  &kp F3  &kp F4  &sys_reset
-            /* row 2 */
+            /* Row 2: BOOTLOADER, trans x3, BT_SEL 1, F5 F6 F7 F8, BOOTLOADER */
             &bootloader  &trans  &trans  &trans  &bt BT_SEL 1   &kp F5  &kp F6  &kp F7  &kp F8  &bootloader
-            /* row 3 */
+            /* Row 3: trans x3, BT_CLR, BT_SEL 2, F9 F10 F11 F12, trans */
             &trans  &trans  &trans  &bt BT_CLR  &bt BT_SEL 2   &kp F9  &kp F10  &kp F11  &kp F12  &trans
-            /* thumb cluster */
+            /* Thumb cluster: trans x4 */
                      &trans  &trans  &trans  &trans
             >;
         };
