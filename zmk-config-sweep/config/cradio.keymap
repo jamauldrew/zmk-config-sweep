@@ -100,7 +100,7 @@ sweep/config/cradio.keymap
 
         tri_layer {
             display-name = "Tri Layer";
-            bindings = 
+            bindings =
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │ F1       │ F2       │ F3       │ F4       │  RESET   │
            &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
@@ -113,7 +113,7 @@ sweep/config/cradio.keymap
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
+        >;
         };
     };
 };
