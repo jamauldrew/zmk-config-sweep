@@ -82,7 +82,7 @@ sweep/config/cradio.keymap
 
         left_layer {
             display-name = "Left Layer";
-            bindings = 
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ INSERT   │  1       │  2       │  3       │ PRTSCRN  │   │  ^       │  (       │  )       │  ]       │  ~       │
             &kp INS    &kp N1     &kp N2     &kp N3     &kp PRSC       &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
