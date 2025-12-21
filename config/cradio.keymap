@@ -27,7 +27,7 @@
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
