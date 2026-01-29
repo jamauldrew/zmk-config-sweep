@@ -9,7 +9,7 @@
 #define HRML(k1,k2,k3,k4) \
     &ht LSHFT k1 \
     &ht LALT k2 \
-    &ht LCTRL k3 \
+    &td_ctrl \
     &ht LGUI k4
 
 #define HRMR(k1,k2,k3,k4) \
@@ -24,10 +24,24 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <225>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
+        };
+        
+        td_ctrl: tap_dance_sticky_ctrl {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp D>, <&sk LCTRL>;
+        };
+        
+        td_z: tap_dance_z_esc_enter {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp Z>, <&kp ESC>, <&kp ENTER>;
         };
     };
 
@@ -36,6 +50,20 @@
         tri_layer {
             if-layers = <1 2>;
             then-layer = <3>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;  // Q + W
+            bindings = <&kp ESC>;
+        };
+        combo_enter {
+            timeout-ms = <50>;
+            key-positions = <10 11>;  // A + S
+            bindings = <&kp ENTER>;
         };
     };
 
