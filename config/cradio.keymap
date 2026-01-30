@@ -50,12 +50,12 @@
         compatible = "zmk,combos";
         combo_esc {
             timeout-ms = <50>;
-            key-positions = <0 1>;  // Q + W
+            key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
         combo_enter {
             timeout-ms = <50>;
-            key-positions = <10 11>;  // A + S
+            key-positions = <10 11>;
             bindings = <&kp ENTER>;
         };
     };
@@ -71,12 +71,12 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │
-            HRML(A,        S,         D,         F)     &ht LCTRL G    &kp H      HRMR(J,        K,         L,        SEMI)
+            HRML(A,        S,         D,         F)  &ht LCTRL G       &kp H      HRMR(J,        K,         L,        SEMI)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &td_z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 TAB   &kp BSPC     &kp SPACE  &lt 1 LS(ENTER)
+                                            &lt 2 TAB   &kp BSPC       &kp SPACE  &lt 1 LS(ENTER)
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -89,7 +89,7 @@
             &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp MINUS
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  !       │  @       │  #       │  $       │  %       │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ' "     │
-            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SQT
+            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp SQT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
             &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
@@ -104,16 +104,16 @@
             bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ INSERT   │  1       │  2       │  3       │ PRTSCRN  │   │  ^       │  (       │  )       │  ]       │  ~       │
-            &kp INS    &kp N1     &kp N2     &kp N3     &kp PRSC        &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
+            &kp INS    &kp N1     &kp N2     &kp N3     &kp PRSC       &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ DELETE   │  4       │  5       │  6       │          │   │  *       │  -       │  =       │  \       │  `       │
-            &kp DEL    &kp N4     &kp N5     &kp N6     &trans          &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
+            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │  7       │  8       │  9       │  0       │   │  &       │  _       │  +       │  |       │ CAPSLCK  │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0          &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &kp CAPSLOCK
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &kp CAPSLOCK
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &trans     &trans          &trans     &trans
-        //                          ╰──────────┴──────────╯   ╰──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
@@ -122,13 +122,13 @@
             bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │ F1       │ F2       │ F3       │ F4       │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0   &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │ F5       │ F6       │ F7       │ F8       │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp F5     &kp F6     &kp F7     &kp F8    &bootloader
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1   &kp F5     &kp F6     &kp F7     &kp F8    &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │ F9       │ F10      │ F11      │ F12      │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &kp F9     &kp F10    &kp F11    &kp F12    &trans
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2   &kp F9     &kp F10    &kp F11    &kp F12    &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
