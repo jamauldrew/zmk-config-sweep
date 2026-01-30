@@ -9,7 +9,7 @@
 #define HRML(k1,k2,k3,k4) \
     &ht LSHFT k1 \
     &ht LALT k2 \
-    &td_ctrl \
+    &kp k3 \
     &ht LGUI k4
 
 #define HRMR(k1,k2,k3,k4) \
@@ -28,13 +28,6 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
-        };
-        
-        td_ctrl: tap_dance_sticky_ctrl {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp D>, <&kp DD>, <&sk LCTRL>;  // D, DD, then sticky ctrl on third tap
         };
         
         td_z: tap_dance_z_esc_enter {
@@ -72,13 +65,13 @@
 
         default_layer {
             display-name = "Default Layer";
-            bindings = <
+            bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │
-            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SEMI)
+            HRML(A,        S,         D,         F)     &ht LCTRL G    &kp H      HRMR(J,        K,         L,        SEMI)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &td_z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
@@ -90,7 +83,7 @@
 
         right_layer {
             display-name = "Right Layer";
-            bindings = <
+            bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │  [       │  {       │  }       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  - _     │
             &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp MINUS
@@ -108,12 +101,12 @@
 
         left_layer {
             display-name = "Left Layer";
-            bindings = <
+            bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ INSERT   │  1       │  2       │  3       │ PRTSCRN  │   │  ^       │  (       │  )       │  ]       │  ~       │
             &kp INS    &kp N1     &kp N2     &kp N3     &kp PRSC        &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ DELETE   │  4       │  5       │  6       │          │   │  * │  -       │  =       │  \       │  `       │
+        //│ DELETE   │  4       │  5       │  6       │          │   │  *       │  -       │  =       │  \       │  `       │
             &kp DEL    &kp N4     &kp N5     &kp N6     &trans          &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │  7       │  8       │  9       │  0       │   │  &       │  _       │  +       │  |       │ CAPSLCK  │
@@ -126,7 +119,7 @@
 
         tri_layer {
             display-name = "Tri Layer";
-            bindings = <
+            bindings = 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │ F1       │ F2       │ F3       │ F4       │  RESET   │
            &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
