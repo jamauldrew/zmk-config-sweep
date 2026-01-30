@@ -34,7 +34,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp D>, <&kp D>, <&sk LCTRL>;  // D, DD, then sticky ctrl on third tap
+            bindings = <&kp D>, <&kp DD>, <&sk LCTRL>;  // D, DD, then sticky ctrl on third tap
         };
         
         td_z: tap_dance_z_esc_enter {
