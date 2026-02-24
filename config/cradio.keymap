@@ -24,8 +24,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <175>;
-            quick-tap-ms = <120>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
             /* require-prior-idle-ms = <150>; */
             bindings = <&kp>, <&kp>;
         };
@@ -42,14 +42,14 @@
         };
 
         hr_fast: homerow_tap_fast {
-          compatible = "zmk,behavior-hold-tap";
-          #binding-cells = <2>;
-          label = "HOMEROW_TAP_FAST";
-          flavor = "hold-preferred";     /* bias toward hold when interrupted */
-          tapping-term-ms = <50>;        /* start 50ms; tune 30–100ms as needed */
-          quick-tap-ms = <0>;
-          hold-while-undecided;         /* apply modifier immediately on keydown */
-          bindings = <&kp>, <&kp>;      /* forwarded params replace these defaults */
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            label = "HOMEROW_TAP_FAST";
+            flavor = "hold-preferred";     /* bias toward hold when interrupted */
+            tapping-term-ms = <50>;        /* start 50ms; tune 30–100ms as needed */
+            quick-tap-ms = <0>;
+            hold-while-undecided;         /* apply modifier immediately on keydown */
+            bindings = <&kp>, <&kp>;      /* forwarded params replace these defaults */
         };
 
         td_z: tap_dance_z_esc_enter {
