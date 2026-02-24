@@ -20,6 +20,16 @@
 
 / {
     behaviors {
+        // Generic Hold-Tap for the 'G' key and others
+        ht: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
+
         // FOR HOME ROW: Stable, avoids accidental modifiers while typing fast
         hr_lp: homerow_lap_preferred {
             compatible = "zmk,behavior-hold-tap";
