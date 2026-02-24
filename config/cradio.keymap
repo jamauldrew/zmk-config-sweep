@@ -7,16 +7,16 @@
 
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) \
-    &ht LSHFT k1 \
-    &ht LALT k2 \
+    &hr_fast LSHFT k1 \
+    &hr_fast LALT k2 \
     &kp k3 \
-    &ht LGUI k4
+    &hr_fast LGUI k4
 
 #define HRMR(k1,k2,k3,k4) \
-    &ht RGUI k1 \
-    &ht RCTRL k2 \
-    &ht RALT k3 \
-    &ht RSHFT k4
+    &hr_fast RGUI k1 \
+    &hr_fast RCTRL k2 \
+    &hr_fast RALT k3 \
+    &hr_fast RSHFT k4
 
 / {
     behaviors {
@@ -24,12 +24,34 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <120>;
             /* require-prior-idle-ms = <150>; */
             bindings = <&kp>, <&kp>;
         };
-        
+
+        lt_fast: layer_tap_fast {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            label = "LAYER_TAP_FAST";
+            flavor = "hold-preferred";
+            tapping-term-ms = <50>;        /* try 30–80 ms; 50ms is a good starting point */
+            quick-tap-ms = <0>;
+            hold-while-undecided;         /* activate hold immediately on press */
+            bindings = <&mo>, <&kp>;      /* &mo = momentary layer (hold), &kp = tap key */
+        };
+
+        hr_fast: homerow_tap_fast {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          label = "HOMEROW_TAP_FAST";
+          flavor = "hold-preferred";     /* bias toward hold when interrupted */
+          tapping-term-ms = <50>;        /* start 50ms; tune 30–100ms as needed */
+          quick-tap-ms = <0>;
+          hold-while-undecided;         /* apply modifier immediately on keydown */
+          bindings = <&kp>, <&kp>;      /* forwarded params replace these defaults */
+        };
+
         td_z: tap_dance_z_esc_enter {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -76,7 +98,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &td_z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 TAB   &kp BSPC     &kp SPACE  &lt 1 LS(ENTER)
+                                            &lt_fast 2 TAB   &kp BSPC     &kp SPACE  &lt_fast 1 LS(ENTER)
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
