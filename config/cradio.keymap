@@ -5,13 +5,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// Home row mods macro - Using a STABLE behavior
-#define HRML(k1,k2,k3,k4) \
-    &hr_lp LSHFT k1 \
-    &hr_lp LALT k2 \
-    &kp k3 \
-    &hr_lp LGUI k4
-
+// Home row mods macro - Only used on the right hand now
 #define HRMR(k1,k2,k3,k4) \
     &hr_lp RGUI k1 \
     &hr_lp RCTRL k2 \
@@ -20,16 +14,6 @@
 
 / {
     behaviors {
-        // Generic Hold-Tap for the 'G' key and others
-        ht: hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            bindings = <&kp>, <&kp>;
-        };
-
         // FOR HOME ROW: Stable, avoids accidental modifiers while typing fast
         hr_lp: homerow_lap_preferred {
             compatible = "zmk,behavior-hold-tap";
@@ -45,7 +29,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>; 
+            tapping-term-ms = <150>;
             quick-tap-ms = <0>;
             bindings = <&mo>, <&kp>;
         };
@@ -91,7 +75,7 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │
-            HRML(A,        S,         D,         F)     &ht LCTRL G          &kp H      HRMR(J,        K,         L,        SEMI)
+            &hr_lp LSHFT A &kp S &kp D &kp F &kp G          &kp H      HRMR(J,        K,         L,        SEMI)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &td_z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
