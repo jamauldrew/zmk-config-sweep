@@ -36,7 +36,6 @@
 			quick-tap-ms = <175>;
 			bindings = <&kp>, <&kp>;
 			hold-trigger-key-positions = <KEYS_R>;
-			hold-trigger-on-released;
 		};
 
 		// Right-hand mods: only trigger if a LEFT-side key is pressed
@@ -48,7 +47,6 @@
 			quick-tap-ms = <175>;
 			bindings = <&kp>, <&kp>;
 			hold-trigger-key-positions = <KEYS_L>;
-			hold-trigger-on-released;
 		};
 
 		lt_fast: layer_tap_fast {
