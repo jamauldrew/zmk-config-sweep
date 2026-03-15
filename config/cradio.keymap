@@ -5,112 +5,125 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// Position Enumeration:
-// 0  1  2  3  4     5  6  7  8  9
-// 10 11 12 13 14    15 16 17 18 19
-// 20 21 22 23 24    25 26 27 28 29
-// 30 31    32 33
+/* * KEY POSITION ENUMERATION (Cradio/Sweep)
+ * 0  1  2  3  4     5  6  7  8  9
+ * 10 11 12 13 14    15 16 17 18 19
+ * 20 21 22 23 24    25 26 27 28 29
+ * 30 31    32 33
+ */
 
+// Left-hand alpha positions
 #define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+// Right-hand alpha positions
 #define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
 
 #define HRML(k1,k2,k3,k4) &hml LSHFT k1 &hml LALT k2 &hml LCTRL k3 &hml LGUI k4
 #define HRMR(k1,k2,k3,k4) &hmr RGUI k1 &hmr RCTRL k2 &hmr RALT k3 &hmr RSHFT k4
 
 / {
-	behaviors {
-		hml: hml {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "balanced";
-			tapping-term-ms = <280>;
-			quick-tap-ms = <175>;
-			bindings = <&kp>, <&kp>;
-			hold-trigger-key-positions = <KEYS_R>;
-		};
+    behaviors {
+        hml: left_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred"; // Better for fast typing/rolls
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            // This forces the LEFT mods to ONLY work when a RIGHT key is pressed
+            hold-trigger-key-positions = <KEYS_R>; 
+            hold-trigger-on-released;
+        };
 
-		hmr: hmr {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "balanced";
-			tapping-term-ms = <280>;
-			quick-tap-ms = <175>;
-			bindings = <&kp>, <&kp>;
-			hold-trigger-key-positions = <KEYS_L>;
-		};
+        hmr: right_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            // This forces the RIGHT mods to ONLY work when a LEFT key is pressed
+            hold-trigger-key-positions = <KEYS_L>;
+            hold-trigger-on-released;
+        };
 
-		lt_fast: lt_fast {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
-			tapping-term-ms = <150>;
-			quick-tap-ms = <0>;
-			bindings = <&mo>, <&kp>;
-		};
+        lt_fast: layer_tap_fast {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            bindings = <&mo>, <&kp>;
+        };
 
-		td_z: td_z {
-			compatible = "zmk,behavior-tap-dance";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp Z>, <&kp ESC>, <&kp ENTER>;
-		};
-	};
+        td_z: tap_dance_z_esc_enter {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp Z>, <&kp ESC>, <&kp ENTER>;
+        };
+    };
 
-	keymap {
-		compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-		default_layer {
-			display-name = "Default";
-			bindings = <&kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
-				    HRML(A, S, D, F) &kp G &kp H HRMR(J, K, L, SEMI)
-				    &td_z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp
-				    FSLH &lt_fast 2 TAB &kp BSPC &kp SPACE &lt_fast 1 LS(ENTER)>;
-		};
+        default_layer {
+            display-name = "Default";
+            bindings = <
+                //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+                //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
+                &kp Q &kp W &kp E &kp R &kp T                                &kp Y &kp U &kp I &kp O &kp P
+                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+                //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │
+                HRML(A, S, D, F) &kp G                                       &kp H HRMR(J, K, L, SEMI)
+                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+                //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
+                &td_z &kp X &kp C &kp V &kp B                                 &kp N &kp M &kp COMMA &kp DOT &kp FSLH
+                //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                               &lt_fast 2 TAB &kp BSPC   &kp SPACE &lt_fast 1 LS(ENTER)
+            >;
+        };
 
-		right_layer {
-			display-name = "Symbols";
-			bindings = <&trans &kp LBKT &kp LBRC &kp RBRC &trans &kp HOME &kp PG_DN &kp
-				    PG_UP &kp END &kp MINUS &kp EXCL &kp AT &kp HASH &kp DLLR &kp
-				    PRCNT &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp SQT &trans &trans
-				    &trans &trans &trans &trans &trans &trans &trans &trans &kp
-				    ENTER &kp ESC &trans &trans>;
-		};
+        right_layer {
+            display-name = "Symbols";
+            bindings = <
+                &trans &kp LBKT &kp LBRC &kp RBRC &trans                     &kp HOME &kp PG_DN &kp PG_UP &kp END &kp MINUS
+                &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT                  &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp SQT
+                &trans &trans &trans &trans &trans                           &trans &trans &trans &trans &trans
+                                               &kp ENTER &kp ESC             &trans &trans
+            >;
+        };
 
-		left_layer {
-			display-name = "Numbers";
-			bindings = <&kp INS &kp N1 &kp N2 &kp N3 &kp PRSC &kp CARET &kp LPAR &kp
-				    RPAR &kp RBKT &kp TILDE &kp DEL &kp N4 &kp N5 &kp N6 &trans &kp
-				    ASTRK &kp MINUS &kp EQUAL &kp BSLH &kp GRAVE &caps_word &kp N7
-				    &kp N8 &kp N9 &kp N0 &kp AMPS &kp UNDER &kp PLUS &kp PIPE &kp
-				    CAPSLOCK &trans &trans &trans &trans>;
-		};
+        left_layer {
+            display-name = "Numbers";
+            bindings = <
+                &kp INS &kp N1 &kp N2 &kp N3 &kp PRSC                        &kp CARET &kp LPAR &kp RPAR &kp RBKT &kp TILDE
+                &kp DEL &kp N4 &kp N5 &kp N6 &trans                          &kp ASTRK &kp MINUS &kp EQUAL &kp BSLH &kp GRAVE
+                &caps_word &kp N7 &kp N8 &kp N9 &kp N0                       &kp AMPS &kp UNDER &kp PLUS &kp PIPE &kp CAPSLOCK
+                                               &trans &trans                 &trans &trans
+            >;
+        };
 
-		tri_layer {
-			display-name = "System";
-			bindings = <&sys_reset &trans &trans &trans &bt BT_SEL 0 &kp F1 &kp F2 &kp
-				    F3 &kp F4 &sys_reset &bootloader &trans &trans &trans &bt BT_SEL
-				    1 &kp F5 &kp F6 &kp F7 &kp F8 &bootloader &trans &trans &trans
-				    &bt BT_CLR &bt BT_SEL 2 &kp F9 &kp F10 &kp F11 &kp F12 &trans
-				    &trans &trans &trans &trans>;
-		};
-	};
+        tri_layer {
+            display-name = "System";
+            bindings = <
+                &sys_reset &trans &trans &trans &bt BT_SEL 0                 &kp F1 &kp F2 &kp F3 &kp F4 &sys_reset
+                &bootloader &trans &trans &trans &bt BT_SEL 1                &kp F5 &kp F6 &kp F7 &kp F8 &bootloader
+                &trans &trans &trans &bt BT_CLR &bt BT_SEL 2                 &kp F9 &kp F10 &kp F11 &kp F12 &trans
+                                               &trans &trans                 &trans &trans
+            >;
+        };
+    };
 
-	conditional_layers {
-		compatible = "zmk,conditional-layers";
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer_logic {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
 
-		tri_layer_logic {
-			if-layers = <1 2>;
-			then-layer = <3>;
-		};
-	};
-
-	combos {
-		compatible = "zmk,combos";
-
-		combo_esc {
-			timeout-ms = <50>;
-			key-positions = <0 1>;
-			bindings = <&kp ESC>;
-		};
-	};
+    combos {
+        compatible = "zmk,combos";
+        combo_esc { timeout-ms = <50>; key-positions = <0 1>; bindings = <&kp ESC>; };
+    };
 };
