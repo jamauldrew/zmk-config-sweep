@@ -33,7 +33,6 @@
 			require-prior-idle-ms = <150>;
 			bindings = <&kp>, <&kp>;
 			hold-trigger-key-positions = <KEYS_R>;
-			hold-trigger-on-released;
 		};
 
 		hmr: right_homerow_mods {
@@ -45,7 +44,6 @@
 			require-prior-idle-ms = <150>;
 			bindings = <&kp>, <&kp>;
 			hold-trigger-key-positions = <KEYS_L>;
-			hold-trigger-on-released;
 		};
 
 		lt_fast: layer_tap_fast {
