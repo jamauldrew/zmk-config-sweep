@@ -1,0 +1,11 @@
+# Load Zephyr Arch Kconfig descriptions.
+osource "/zmk-config-sweep/zephyr/arch/x86/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/xtensa/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/sparc/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/riscv/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/posix/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/nios2/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/mips/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/arm64/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/arm/Kconfig"
+osource "/zmk-config-sweep/zephyr/arch/arc/Kconfig"

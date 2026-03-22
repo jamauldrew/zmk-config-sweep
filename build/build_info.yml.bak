@@ -1,0 +1,5 @@
+west:
+  command: /usr/local/bin/west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- -DSHIELD=cradio_right
+    -DZMK_CONFIG=/zmk-config-sweep/config
+  topdir: /zmk-config-sweep
+  version: 1.5.0

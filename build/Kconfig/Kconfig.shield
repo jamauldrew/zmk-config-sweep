@@ -1,0 +1,2 @@
+osource "/zmk-config-sweep/zmk/app/module/boards/shields/*/Kconfig.shield"
+osource "/zmk-config-sweep/zmk/app/boards/shields/*/Kconfig.shield"

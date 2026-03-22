@@ -1,0 +1,69 @@
+cmake:
+  application:
+    configuration-dir: /zmk-config-sweep/zmk/app
+    source-dir: /zmk-config-sweep/zmk/app
+  board:
+    name: nice_nano
+    path:
+     - /zmk-config-sweep/zmk/app/module/boards/nicekeyboards/nice_nano
+     - /zmk-config-sweep/zmk/app/boards/nicekeyboards/nice_nano
+    qualifiers: nrf52840/zmk
+    revision: 2.0.0
+  devicetree:
+    bindings-dirs:
+     - /zmk-config-sweep/zmk/app/module/dts/bindings
+     - /zmk-config-sweep/zmk/app/dts/bindings
+     - /zmk-config-sweep/zephyr/dts/bindings
+    extra-user-files:
+     - /zmk-config-sweep/config/cradio.keymap
+    files:
+     - /zmk-config-sweep/zmk/app/boards/nicekeyboards/nice_nano/nice_nano_nrf52840_zmk.dts
+     - /zmk-config-sweep/zmk/app/boards/nicekeyboards/nice_nano/nice_nano_nrf52840_zmk_2_0_0.overlay
+     - /zmk-config-sweep/zmk/app/boards/shields/cradio/cradio_right.overlay
+     - /zmk-config-sweep/config/cradio.keymap
+    include-dirs:
+     - /zmk-config-sweep/modules/hal/stm32/dts
+     - /zmk-config-sweep/modules/hal/atmel/include
+     - /zmk-config-sweep/modules/hal/gigadevice/include
+     - /zmk-config-sweep/modules/hal/nuvoton/dts
+     - /zmk-config-sweep/zmk/app/module/include
+     - /zmk-config-sweep/zmk/app/module/dts
+     - /zmk-config-sweep/zmk/app/include
+     - /zmk-config-sweep/zmk/app/dts/common
+     - /zmk-config-sweep/zmk/app/dts
+     - /zmk-config-sweep/zephyr/include
+     - /zmk-config-sweep/zephyr/include/zephyr
+     - /zmk-config-sweep/zephyr/dts/common
+     - /zmk-config-sweep/zephyr/dts/x86
+     - /zmk-config-sweep/zephyr/dts/xtensa
+     - /zmk-config-sweep/zephyr/dts/sparc
+     - /zmk-config-sweep/zephyr/dts/riscv
+     - /zmk-config-sweep/zephyr/dts/posix
+     - /zmk-config-sweep/zephyr/dts/nios2
+     - /zmk-config-sweep/zephyr/dts/arm64
+     - /zmk-config-sweep/zephyr/dts/arm
+     - /zmk-config-sweep/zephyr/dts/arc
+     - /zmk-config-sweep/zephyr/dts
+  kconfig:
+    files:
+     - /zmk-config-sweep/zmk/app/boards/nicekeyboards/nice_nano/nice_nano_nrf52840_zmk_2_0_0_defconfig
+     - /zmk-config-sweep/zmk/app/prj.conf
+     - /zmk-config-sweep/zmk/app/boards/shields/cradio/cradio_right.conf
+     - /zmk-config-sweep/config/cradio.conf
+     - /zmk-config-sweep/config/cradio.conf
+    user-files:
+     - /zmk-config-sweep/zmk/app/prj.conf
+  toolchain:
+    name: zephyr
+    path: /opt/zephyr-sdk-0.16.9
+  vendor-specific:
+    nordic:
+      svdfile: /zmk-config-sweep/modules/hal/nordic/nrfx/mdk/nrf52840.svd
+  zephyr:
+    version: 4.1.0
+    zephyr-base: /zmk-config-sweep/zephyr
+version: 0.1.0
+west:
+  command: /usr/local/bin/west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- -DSHIELD=cradio_right -DZMK_CONFIG=/zmk-config-sweep/config
+  topdir: /zmk-config-sweep
+  version: 1.5.0
